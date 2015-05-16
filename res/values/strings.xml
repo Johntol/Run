@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Run</string>
+    <string name="notification_subtitle">跑步测量</string>
+
+    <string name="started">Run started.</string>
+    <string name="stopped">Run stopped.</string>
+
+    <string name="steps">steps</string>
+    <string name="kilometers">kilometers</string>
+    <string name="miles">miles</string>
+    <string name="steps_per_minute">steps / minute</string>
+    <string name="kilometers_per_hour">kilometers / hour</string>
+    <string name="miles_per_hour">miles / hour</string>
+    <string name="calories_burned">calories burned</string>
+    <string name="centimeters">centimeters</string>
+    <string name="inches">inches</string>
+    <string name="kilograms">kilograms</string>
+    <string name="pounds">pounds</string>
+
+    <string name="desired_pace">我的目标</string>
+    <string name="desired_speed">Desired speed:</string>
+
+  
+    
+   
+
+</resources>

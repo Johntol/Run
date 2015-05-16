@@ -1,0 +1,11 @@
+<resources>
+    <color name="screen_background">#4395D1</color>
+    <color name="display_button_white">#FFFFFF</color>
+    <color name="display_background">#000</color>
+    <color name="display_background_green">#18A762</color>
+    <color name="display_background_blue">#44DAFF</color>
+    <color name="display_background_orange">#DF5431</color>
+    <color name="display_background_purple">#B551A5</color>
+    <color name="display_background_yellow">#FFA011</color>
+    <color name="display_text_black">#010203</color>
+</resources>
