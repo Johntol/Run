@@ -3,11 +3,8 @@
     <string name="app_name">Run</string>
     <string name="notification_subtitle">跑步测量</string>
 
-    <string name="started">Run started.</string>
-    <string name="stopped">Run stopped.</string>
-
     <string name="steps">steps</string>
-    <string name="kilometers">kilometers</string>
+    <string name="meters">meters</string>
     <string name="miles">miles</string>
     <string name="steps_per_minute">steps / minute</string>
     <string name="kilometers_per_hour">kilometers / hour</string>
@@ -18,11 +15,34 @@
     <string name="kilograms">kilograms</string>
     <string name="pounds">pounds</string>
 
+    
     <string name="desired_pace">我的目标</string>
     <string name="desired_speed">Desired speed:</string>
-
-  
     
-   
-
+    <string name="history">历史</string>
+	<string name="today">今天</string>
+	<string name="sport">运动</string>
+	<string name="_0">0</string>
+  	<string name="step">步数</string>
+  	<string name="complete">已完成：</string>
+  	<string name="_0_">0%</string>
+    <string name="_10000">目标：10000</string>
+    <string name="averagestep">平均步数</string>
+    <string name="sumstep">总步数</string>
+    
+   	
+   	
+   	<string name="analysis">分析</string>
+   	<string name="count">计步</string>
+   	<string name="pk">PK</string>
+    <string name="set">设置</string>
+    <string name="Monday">周一</string>
+    <string name="Tuesday">周二</string>
+    <string name="Wednesday">周三</string>
+    <string name="Thursday">周四</string>
+    <string name="Friday">周五</string>
+    <string name="Saturday">周六</string>
+    <string name="Sunday">周日</string>
+    <string name="start">Start</string>
+    <string name="quit">Quit</string>
 </resources>
