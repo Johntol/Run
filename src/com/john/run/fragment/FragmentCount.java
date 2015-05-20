@@ -2,8 +2,11 @@ package com.john.run.fragment;
 
 import java.text.DecimalFormat;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,6 +21,7 @@ import com.john.run.R;
 import com.john.run.step.StepDetector;
 import com.john.run.step.StepService;
 
+@SuppressLint("NewApi")
 public class FragmentCount extends Fragment implements OnClickListener {
 
 	private int total_step = 0;
@@ -38,6 +42,7 @@ public class FragmentCount extends Fragment implements OnClickListener {
 
 	private View view;
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -69,7 +74,6 @@ public class FragmentCount extends Fragment implements OnClickListener {
 		
 		Message msg = new Message();
 		handler.sendMessage(msg);
-		countStep();
 		mThread();
 	}
 
@@ -77,7 +81,7 @@ public class FragmentCount extends Fragment implements OnClickListener {
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 
-			countStep();
+			total_step = StepDetector.CURRENT_SETP;
 			//步数计算
 			step_value.setText(total_step + "");
 			//卡路里消耗计算
@@ -85,7 +89,6 @@ public class FragmentCount extends Fragment implements OnClickListener {
 			calories_value.setText(calories + "");
 			//路程计算
 			mDistance = (float) (step_length * total_step / 100.0); // centimeters/meter
-
 			String distance = String.format(new DecimalFormat("###.###").format(mDistance));
 
 			distance_value.setText(distance);
@@ -113,16 +116,6 @@ public class FragmentCount extends Fragment implements OnClickListener {
 		}
 	}
 
-	
-	private void countStep() {
-		if (StepDetector.CURRENT_SETP % 2 == 0) {
-			total_step = StepDetector.CURRENT_SETP / 2 * 3;
-		} else {
-			total_step = StepDetector.CURRENT_SETP / 2 * 3 + 1;
-		}
-
-	}
-
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -138,5 +131,8 @@ public class FragmentCount extends Fragment implements OnClickListener {
 		}
 	}
 	
+	public int getTotal_step() {
+		return total_step;
+	}
 
 }
