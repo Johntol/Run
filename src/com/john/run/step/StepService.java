@@ -10,6 +10,9 @@ import android.os.PowerManager.WakeLock;
 
 public class StepService extends Service {
 
+	/**
+	 * 是否在跑步
+	 */
 	public static Boolean flag = false; 
 	//管理传感器
 	private SensorManager mSensorManager;

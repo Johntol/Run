@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.john.run.R;
 import com.john.run.widet.HistogramView;
@@ -21,6 +22,22 @@ public class FragmentAnalysis extends Fragment implements OnClickListener{
 	private HistogramView hv5;
 	private HistogramView hv6;
 	private HistogramView hv7;
+	
+	//平均步数
+	private TextView average_step;
+	//总步数
+	private TextView sum_step;
+	
+	private int monday_step;
+	private int tuesday_setp;
+	private int wednesday_step;
+	private int thursday_step;
+	private int friday_step;
+	private int saturday_step;
+	private int sunday_step;
+	
+	private int average;
+	private int sum;
 	
 	private View view;
 	@Override
@@ -44,6 +61,9 @@ public class FragmentAnalysis extends Fragment implements OnClickListener{
 	 */
 	private void init()
 	{
+		average_step = (TextView) view.findViewById(R.id.average_step);
+		sum_step = (TextView) view.findViewById(R.id.sum_step);
+		
 		hv1 = (HistogramView) view.findViewById(R.id.map1);
 		hv2 = (HistogramView) view.findViewById(R.id.map2);
 		hv3 = (HistogramView) view.findViewById(R.id.map3);
