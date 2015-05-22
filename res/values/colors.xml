@@ -7,6 +7,8 @@
     <color name="display_background_orange">#DF5431</color>
     <color name="display_background_purple">#B551A5</color>
     <color name="display_background_yellow">#FFA011</color>
+    <color name="display_background_yellow1">#E9C341</color>
     <color name="display_text_black">#010203</color>
+    
     <color name="tab_selected_bg">#C4E1E1</color>
 </resources>

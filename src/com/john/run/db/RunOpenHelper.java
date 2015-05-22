@@ -14,6 +14,7 @@ public class RunOpenHelper extends SQLiteOpenHelper {
 			+ "id integer primary key autoincrement,"
 			+ "number integer,"
 			+ "date integer,"
+			+ "aim integer," 
 			+ "userId integer)";
 	
 	/**
@@ -28,10 +29,9 @@ public class RunOpenHelper extends SQLiteOpenHelper {
 			+ "birthday integer,"
 			+ "sensitivity integer,"
 			+ "step_length integer)";
-
-	
+	 
 	public RunOpenHelper(Context context, String name,
-			CursorFactory factory, int version) {
+			CursorFactory factory, int version) {	
 		super(context, name, factory, version);
 	}
 
@@ -43,7 +43,7 @@ public class RunOpenHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		
+			onCreate(db);
 	}
 
 }

@@ -44,5 +44,7 @@
     <string name="Saturday">周六</string>
     <string name="Sunday">周日</string>
     <string name="start">Start</string>
+    <string name="stop">Stop</string>
     <string name="quit">Quit</string>
+    <string name="save">SAVE</string>
 </resources>

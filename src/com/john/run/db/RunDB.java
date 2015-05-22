@@ -1,13 +1,14 @@
 package com.john.run.db;
 
-import com.john.run.model.Step;
-import com.john.run.model.User;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import com.john.run.fragment.FragmentCount;
+import com.john.run.model.Step;
+import com.john.run.model.User;
 
 public class RunDB {
 
@@ -20,7 +21,7 @@ public class RunDB {
 	private SQLiteDatabase db;
 	
 	private RunDB(Context context){
-		RunOpenHelper runHelper = new RunOpenHelper(context, DB_NAME, null, VERSION);
+		RunOpenHelper runHelper = new RunOpenHelper(context, DB_NAME,null, VERSION);
 		db = runHelper.getWritableDatabase();
 	}
 	
@@ -45,12 +46,17 @@ public class RunDB {
 		}		
 	}
 	
-	public void saveStep(Step step){
-		if(step != null){
+	/**
+	 * 保存步数到数据库
+	 * @param step
+	 */
+	public void saveStep(Step step) {
+		if (step != null) {
 			ContentValues values = new ContentValues();
 			values.put("number", step.getNumber());
 			values.put("date", step.getDate());
 			values.put("userId", step.getUserId());
+			values.put("aim", FragmentCount.target_step);
 			db.insert("step", null, values);
 		}
 	}
@@ -61,21 +67,22 @@ public class RunDB {
 	 * @param date
 	 * @return
 	 */
-	public Step loadSteps(int userId, int date){
+	public Step loadSteps(int userId, String date) {
 		Step step = new Step();
-		Cursor cursor = db.query("step", null, "userId=? and date = ?",
-				new String[]{String.valueOf(userId),String.valueOf(date)},
-				null, null, null);
-		if(cursor.moveToFirst()){
-			do{
+		Cursor cursor = db
+				.query("step", null, "userId = ? and date = ?", new String[] {
+						String.valueOf(userId), date }, null, null, null);
+		if (cursor.moveToFirst()) {
+			do {
 				step.setNumber(cursor.getInt(cursor.getColumnIndex("number")));
-				step.setDate(cursor.getInt(cursor.getColumnIndex("date")));
-				step.setId(userId);
-			}while(cursor.moveToNext());
-		}else{
+				step.setDate(cursor.getString(cursor.getColumnIndex("date")));
+				step.setTarget(cursor.getInt(cursor.getColumnIndex("aim")));
+				step.setUserId(userId);
+			} while (cursor.moveToNext());
+
+		} else {
 			Log.i("tag", "step is null!");
 		}
-		
 		return step;
 	}
 	

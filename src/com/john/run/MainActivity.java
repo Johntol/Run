@@ -14,7 +14,7 @@ import com.john.run.fragment.FragmentAdapter;
 import com.john.run.fragment.FragmentAnalysis;
 import com.john.run.fragment.FragmentCount;
 import com.john.run.fragment.FragmentHistory;
-import com.john.run.step.StepService;
+import com.john.run.service.StepService;
 
 public class MainActivity extends Activity {
 	//

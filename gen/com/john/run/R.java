@@ -17,10 +17,11 @@ public final class R {
         public static final int display_background_orange=0x7f040005;
         public static final int display_background_purple=0x7f040006;
         public static final int display_background_yellow=0x7f040007;
+        public static final int display_background_yellow1=0x7f040008;
         public static final int display_button_white=0x7f040001;
-        public static final int display_text_black=0x7f040008;
+        public static final int display_text_black=0x7f040009;
         public static final int screen_background=0x7f040000;
-        public static final int tab_selected_bg=0x7f040009;
+        public static final int tab_selected_bg=0x7f04000a;
     }
     public static final class dimen {
         public static final int button=0x7f050007;
@@ -39,13 +40,14 @@ public final class R {
     public static final class drawable {
         public static final int column=0x7f020000;
         public static final int ic_launcher=0x7f020001;
-        public static final int selector_tab=0x7f020002;
-        public static final int tababoutus=0x7f020003;
-        public static final int tabconfigicon=0x7f020004;
-        public static final int tablatestalert=0x7f020005;
-        public static final int tabrecommd=0x7f020006;
-        public static final int tabsearch=0x7f020007;
-        public static final int title_history=0x7f020008;
+        public static final int selector_button=0x7f020002;
+        public static final int selector_tab=0x7f020003;
+        public static final int tababoutus=0x7f020004;
+        public static final int tabconfigicon=0x7f020005;
+        public static final int tablatestalert=0x7f020006;
+        public static final int tabrecommd=0x7f020007;
+        public static final int tabsearch=0x7f020008;
+        public static final int title_history=0x7f020009;
     }
     public static final class id {
         public static final int Fragment=0x7f080026;
@@ -66,15 +68,12 @@ public final class R {
         public static final int btn3=0x7f08002a;
         public static final int btn4=0x7f08002b;
         public static final int btn5=0x7f08002c;
-        public static final int button_desired_pace_lower=0x7f080017;
-        public static final int button_desired_pace_raise=0x7f08001a;
+        public static final int button_target_lower=0x7f080017;
+        public static final int button_target_raise=0x7f08001a;
         public static final int calories_units=0x7f080023;
         public static final int calories_value=0x7f080022;
         public static final int date_image=0x7f080012;
         public static final int date_text=0x7f080013;
-        public static final int desired_pace_control=0x7f080016;
-        public static final int desired_pace_label=0x7f080018;
-        public static final int desired_pace_value=0x7f080019;
         public static final int distance_units=0x7f080020;
         public static final int distance_value=0x7f08001f;
         public static final int map1=0x7f080003;
@@ -87,12 +86,15 @@ public final class R {
         public static final int number=0x7f080014;
         public static final int progressBar=0x7f080015;
         public static final int progressBar1=0x7f08000a;
-        public static final int quit=0x7f080025;
         public static final int radioGroup=0x7f080027;
-        public static final int start=0x7f080024;
+        public static final int save=0x7f080025;
+        public static final int start_stop=0x7f080024;
         public static final int step_units=0x7f08001d;
         public static final int step_value=0x7f08001c;
         public static final int sum_step=0x7f080002;
+        public static final int target=0x7f080019;
+        public static final int target_control=0x7f080016;
+        public static final int target_label=0x7f080018;
     }
     public static final class layout {
         public static final int analyze=0x7f030000;
@@ -130,13 +132,15 @@ public final class R {
         public static final int notification_subtitle=0x7f060001;
         public static final int pk=0x7f06001b;
         public static final int pounds=0x7f06000c;
-        public static final int quit=0x7f060025;
+        public static final int quit=0x7f060026;
+        public static final int save=0x7f060027;
         public static final int set=0x7f06001c;
         public static final int sport=0x7f060011;
         public static final int start=0x7f060024;
         public static final int step=0x7f060013;
         public static final int steps=0x7f060002;
         public static final int steps_per_minute=0x7f060005;
+        public static final int stop=0x7f060025;
         public static final int sumstep=0x7f060018;
         public static final int today=0x7f060010;
     }
