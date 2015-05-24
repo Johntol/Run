@@ -3,10 +3,14 @@ package com.john.run.fragment;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningServiceInfo;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -203,14 +207,18 @@ public class FragmentCount extends Fragment implements OnClickListener {
 				break;
 			
 			case R.id.save:
-				save_intent = new Intent(getActivity(), AutoSaveService.class);
+				//在开启计步服务
+				if(isServiceRunning(getActivity().getApplicationContext(), "com.john.run.service.StepService")){	
+					start_stop.setText(R.string.start);		
+					draw = getResources().getDrawable(R.color.display_background_green);
+					start_stop.setBackground(draw);
+					getActivity().stopService(step_intent);
+					Toast.makeText(getActivity(), "停止计步!", Toast.LENGTH_SHORT).show();
+				}//没开启计步服务
 				//保存
+				save_intent = new Intent(getActivity(), AutoSaveService.class);	
 				getActivity().startService(save_intent);
-				Toast.makeText(getActivity(), "save success!", Toast.LENGTH_SHORT).show();
-				start_stop.setText(R.string.start);		
-				draw = getResources().getDrawable(R.color.display_background_green);
-				start_stop.setBackground(draw);
-				getActivity().stopService(step_intent);
+				Toast.makeText(getActivity(), "保存成功!", Toast.LENGTH_SHORT).show();
 				getActivity().stopService(save_intent);
 				break;
 				
@@ -240,9 +248,39 @@ public class FragmentCount extends Fragment implements OnClickListener {
 		return total_step;
 	}
 	
+	
+	/**  
+     * 用来判断服务是否运行.  
+     * @param context  
+     * @param className 判断的服务名字  
+     * @return true 在运行 false 不在运行  
+     */  
+    public static boolean isServiceRunning(Context mContext,String className) {   
+        boolean isRunning = false;   
+        ActivityManager activityManager = (ActivityManager)   
+        mContext.getSystemService(Context.ACTIVITY_SERVICE);    
+        List<ActivityManager.RunningServiceInfo> serviceList    
+        = activityManager.getRunningServices(30);   
+       if (!(serviceList.size()>0)) {   
+            return false;   
+        }   
+        for (int i=0; i<serviceList.size(); i++) {   
+            if (serviceList.get(i).service.getClassName().equals(className) == true) {   
+                isRunning = true;   
+                break;   
+            }   
+        }   
+        return isRunning;   
+    }   
+	
 	@Override
 	public void onDestroy() {
 		super.onDestroy();	
+		step.setNumber(total_step);
+		step.setTarget(target_step);
+		step.setDate(today);
+		step.setUserId(1);
+		runDB.saveStep(step);
 	}
 
 }
