@@ -32,12 +32,7 @@
             </intent-filter>
         </activity>
         <service android:name="com.john.run.service.StepService"></service>
-        <service android:name="com.john.run.service.AutoSaveService"></service>
-            
-        <intent-filter>
-                <action android:name="android.intent.action.DATE_CHANGED" />
-            </intent-filter>
-             
+        <service android:name="com.john.run.service.AutoSaveService"></service>            
     </application>
 
 </manifest>

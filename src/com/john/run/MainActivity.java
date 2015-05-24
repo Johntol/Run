@@ -14,13 +14,15 @@ import com.john.run.fragment.FragmentAdapter;
 import com.john.run.fragment.FragmentAnalysis;
 import com.john.run.fragment.FragmentCount;
 import com.john.run.fragment.FragmentHistory;
+import com.john.run.service.AutoSaveService;
 import com.john.run.service.StepService;
 
 public class MainActivity extends Activity {
 	//
 	public List<Fragment> fragments = new ArrayList<Fragment>();
 	private RadioGroup rgs;
-	Intent intent;
+	Intent step_intent;
+	Intent save_intent;
 	//
 
 	@Override
@@ -39,11 +41,26 @@ public class MainActivity extends Activity {
 		new FragmentAdapter(this, fragments, R.id.Fragment, rgs);
 
 	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		super.onSaveInstanceState(outState);
+		save_intent = new Intent(this, AutoSaveService.class);	
+		startService(save_intent);
+		stopService(save_intent);
+	} 
+
+	
 
 	@Override
 	protected void onDestroy() {
-		intent = new Intent(this, StepService.class);
-		stopService(intent);
 		super.onDestroy();
-	}
+		step_intent = new Intent(this, StepService.class);
+		stopService(step_intent);
+		//防止忘记按保存直接退出
+		save_intent = new Intent(this, AutoSaveService.class);	
+		startService(save_intent);
+		stopService(save_intent);
+		}
 }

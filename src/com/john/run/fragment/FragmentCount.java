@@ -282,5 +282,11 @@ public class FragmentCount extends Fragment implements OnClickListener {
 		step.setUserId(1);
 		runDB.saveStep(step);
 	}
+	
+	public Step savestep(Step step) {
+		step = this.step;
+		return step;
+
+	}
 
 }

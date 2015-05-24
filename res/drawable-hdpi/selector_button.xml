@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
-
+	<!-- 变换Start和Stop -->
+    
     <!-- 默认时的图片 -->
     <item android:drawable="@color/display_background_green" 
           android:state_window_focused="false"/>
