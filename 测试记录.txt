@@ -2,7 +2,8 @@
 
 5.22 	没有开启计步，一开始点save，会出现异常(已解决，判断stepService是否开启)
 
-5.23 	真机上界面还是不美观 （暂时解决）
+5.23 	真机上界面还是不美观（暂时解决）
 	真机测试保存读取数据有问题（在FragmentCount的Ondestory（）中加入保存）
-	真机测试要按了后退键然后退出才成功保存，直接home键然后退出保存不了
-	
+	真机测试要按了后退键然后退出才成功保存，直接home键然后退出保存不了（临时解决方案）
+		return super.onStartCommand(intent, START_REDELIVER_INTENT, startId);传值为START_REDELIVER_INTENT					
+5.25    查看数据库发现保存一次增加了5条数据（删除了多余的代码）

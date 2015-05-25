@@ -42,14 +42,14 @@ public class MainActivity extends Activity {
 
 	}
 	
-	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		// TODO Auto-generated method stub
-		super.onSaveInstanceState(outState);
-		save_intent = new Intent(this, AutoSaveService.class);	
-		startService(save_intent);
-		stopService(save_intent);
-	} 
+//	@Override
+//	protected void onSaveInstanceState(Bundle outState) {
+//		// TODO Auto-generated method stub
+//		super.onSaveInstanceState(outState);
+//		save_intent = new Intent(this, AutoSaveService.class);	
+//		startService(save_intent);
+//		stopService(save_intent);
+//	} 
 
 	
 
@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
 		stopService(step_intent);
 		//防止忘记按保存直接退出
 		save_intent = new Intent(this, AutoSaveService.class);	
-		startService(save_intent);
-		stopService(save_intent);
+		if(FragmentCount.isServiceRunning(this,"com.john.run.service.AutoSaveService")){
+		stopService(save_intent);}
 		}
 }

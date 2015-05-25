@@ -1,6 +1,7 @@
 package com.john.run.fragment;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import android.app.Fragment;
@@ -63,9 +64,65 @@ public class FragmentAnalysis extends Fragment implements OnClickListener{
 		//初始化
 		init();
 		setWeek();
+		setProgress();
+		calculate();
 		
 	}
 	
+	private void calculate() {
+		sum_step.setText(sum + "");
+		average = sum / 7;
+		average_step.setText(average + "");
+		
+	}
+	/**
+	 * 设置进度条
+	 */
+	private void setProgress() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		day = sdf.format(calendar.getTime());
+		Toast.makeText(getActivity(), day + "", Toast.LENGTH_LONG).show();
+		step = runDB.loadSteps(1, day);
+		hv1.setProgress(step.getNumber() / 10000.0);
+		sum += step.getNumber();
+		 
+		calendar.add(Calendar.DAY_OF_MONTH, -1);
+		day = sdf.format(calendar.getTime());
+		step = runDB.loadSteps(1, day);
+		hv2.setProgress((step.getNumber() / 10000.0));
+		sum += step.getNumber();
+		
+		calendar.add(Calendar.DAY_OF_MONTH, -1);
+		day = sdf.format(calendar.getTime());
+		step = runDB.loadSteps(1, day);
+		hv3.setProgress((step.getNumber() / 10000.0));
+		sum += step.getNumber();
+
+		calendar.add(Calendar.DAY_OF_MONTH, -1);
+		day = sdf.format(calendar.getTime());
+		step = runDB.loadSteps(1, day);
+		hv4.setProgress((step.getNumber() / 10000.0));
+		sum += step.getNumber();
+
+		calendar.add(Calendar.DAY_OF_MONTH, -1);
+		day = sdf.format(calendar.getTime());
+		step = runDB.loadSteps(1, day);
+		hv5.setProgress((step.getNumber() / 10000.0));
+		sum += step.getNumber();
+
+		calendar.add(Calendar.DAY_OF_MONTH, -1);
+		day = sdf.format(calendar.getTime());
+		step = runDB.loadSteps(1, day);
+		hv6.setProgress((step.getNumber() / 10000.0));
+		sum += step.getNumber();
+
+		calendar.add(Calendar.DAY_OF_MONTH, -1);
+		day = sdf.format(calendar.getTime());
+		step = runDB.loadSteps(1, day);
+		hv7.setProgress((step.getNumber() / 10000.0));
+		sum += step.getNumber();
+
+	}
 	private void setWeek() {
 		int day = calendar.get(Calendar.DAY_OF_WEEK);
 //		Toast.makeText(getActivity(), day + "", Toast.LENGTH_LONG).show();
@@ -111,6 +168,8 @@ public class FragmentAnalysis extends Fragment implements OnClickListener{
 		
 		calendar = Calendar.getInstance();
 		
+		runDB = RunDB.getInstance(getActivity());
+		
 		hv1 = (HistogramView) view.findViewById(R.id.map1);
 		hv2 = (HistogramView) view.findViewById(R.id.map2);
 		hv3 = (HistogramView) view.findViewById(R.id.map3);
@@ -118,13 +177,7 @@ public class FragmentAnalysis extends Fragment implements OnClickListener{
 		hv5 = (HistogramView) view.findViewById(R.id.map5);
 		hv6 = (HistogramView) view.findViewById(R.id.map6);
 		hv7 = (HistogramView) view.findViewById(R.id.map7);
-		hv1.setProgress(0.1);
-		hv2.setProgress(0.9);
-		hv3.setProgress(0.6);
-		hv4.setProgress(0.8);
-		hv5.setProgress(0.5);
-		hv6.setProgress(0.6);
-		hv7.setProgress(0.7);
+		
 		hv1.setOnClickListener(this);
 		hv2.setOnClickListener(this);
 		hv3.setOnClickListener(this);

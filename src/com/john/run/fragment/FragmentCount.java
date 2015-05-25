@@ -79,7 +79,6 @@ public class FragmentCount extends Fragment implements OnClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		this.view = inflater.inflate(R.layout.main, container, false);
 		init();
 		
@@ -216,10 +215,16 @@ public class FragmentCount extends Fragment implements OnClickListener {
 					Toast.makeText(getActivity(), "停止计步!", Toast.LENGTH_SHORT).show();
 				}//没开启计步服务
 				//保存
-				save_intent = new Intent(getActivity(), AutoSaveService.class);	
-				getActivity().startService(save_intent);
+//				save_intent = new Intent(getActivity(), AutoSaveService.class);	
+				// TODO 临时解决方案
+				step.setNumber(total_step);
+				step.setTarget(target_step);
+				step.setDate(today);
+				step.setUserId(1);
+				runDB.saveStep(step);
+//				getActivity().startService(save_intent);
 				Toast.makeText(getActivity(), "保存成功!", Toast.LENGTH_SHORT).show();
-				getActivity().stopService(save_intent);
+//				getActivity().stopService(save_intent);
 				break;
 				
 			case R.id.button_target_raise:
@@ -283,10 +288,4 @@ public class FragmentCount extends Fragment implements OnClickListener {
 		runDB.saveStep(step);
 	}
 	
-	public Step savestep(Step step) {
-		step = this.step;
-		return step;
-
-	}
-
 }

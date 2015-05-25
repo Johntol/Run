@@ -3,6 +3,7 @@ package com.john.run.service;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.widget.Toast;
 
 import com.john.run.db.RunDB;
 import com.john.run.fragment.FragmentCount;
@@ -29,26 +30,9 @@ public class AutoSaveService extends Service {
 	private void init() {
 		step = new Step();
 		runDB = RunDB.getInstance(this);
-		userid = 1;
-		date = "20150522";
 	}
 	
 	public int onStartCommand(Intent intent, int flags, int startId) {
-		onStart(intent, startId);
-		return super.onStartCommand(intent, flags, startId);
-
-	}
-	
-	@Override
-	public void onDestroy() {
-		super.onDestroy();
-	}
-	
-	@Override
-	@Deprecated
-	public void onStart(Intent intent, int startId) {
-		// TODO Auto-generated method stub
-		super.onStart(intent, startId);
 		//初始化
 		   init();
 		//第一次开启
@@ -58,13 +42,24 @@ public class AutoSaveService extends Service {
 			step.setUserId(userid);
 			step.setTarget(3000);
 			runDB.saveStep(step);
+			Toast.makeText(getApplicationContext(), "onStartCommand 第一次加载", Toast.LENGTH_SHORT).show();
 		 }
 		else{
 			step.setNumber(StepDetector.CURRENT_SETP);
 			step.setDate(date);
 			step.setUserId(userid);
 			step.setTarget(FragmentCount.target_step);
+			Toast.makeText(getApplicationContext(), "onStartCommand 保存", Toast.LENGTH_SHORT).show();
 			runDB.saveStep(step);
 	     }
-	 }
+		return super.onStartCommand(intent, START_REDELIVER_INTENT, startId);
+
+	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+	}
+	
+	
 }
