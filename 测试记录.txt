@@ -1,9 +1,19 @@
-5.21 	忘记增加目标字段（已解决）
+5.21 	1.忘记增加目标字段（已解决）
 
-5.22 	没有开启计步，一开始点save，会出现异常(已解决，判断stepService是否开启)
+5.22 	1.没有开启计步，一开始点save，会出现异常(已解决，判断stepService是否开启)
 
-5.23 	真机上界面还是不美观（暂时解决）
-	真机测试保存读取数据有问题（在FragmentCount的Ondestory（）中加入保存）
-	真机测试要按了后退键然后退出才成功保存，直接home键然后退出保存不了（临时解决方案）
+5.23 	1.真机上界面还是不美观（暂时解决）
+	2.真机测试保存读取数据有问题（在FragmentCount的Ondestory（）中加入保存）
+	3.真机测试要按了后退键然后退出才成功保存，直接home键然后退出保存不了（临时解决方案）
 		return super.onStartCommand(intent, START_REDELIVER_INTENT, startId);传值为START_REDELIVER_INTENT					
-5.25    查看数据库发现保存一次增加了5条数据（删除了多余的代码）
+5.25    1.查看数据库发现保存一次增加了5条数据（删除了多余的代码）
+
+5.26    1.在历史点击选中某天日期，查询不出数据。
+			（已解决，DatePickerDialog 在选中某一天的时候eg：
+			选中五一 得到的字符串为201541而不是查询的20150501
+			首先要将public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3)
+				arg2+1 然后判断 arg2和arg3是否分别大于10 不大于的话要分别在月份和日期前加个0）
+
+
+	2.在RunDB类中,目标的字段放入值的时候放错了,导致加入旧数据,每次都是当前的目标（已解决，
+			values.put("aim",  step.getTarget());而不是一个static的目标）

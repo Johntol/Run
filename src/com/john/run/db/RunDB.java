@@ -56,7 +56,7 @@ public class RunDB {
 			values.put("number", step.getNumber());
 			values.put("date", step.getDate());
 			values.put("userId", step.getUserId());
-			values.put("aim", FragmentCount.target_step);
+			values.put("aim",  step.getTarget());
 			db.insert("step", null, values);
 		}
 	}

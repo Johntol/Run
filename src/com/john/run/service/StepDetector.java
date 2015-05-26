@@ -12,7 +12,7 @@ public class StepDetector implements SensorEventListener{
 	//当前步伐         
 	public static int CURRENT_SETP = 0;
 	//灵敏度
-	public static float SENSITIVITY = 5;
+	public static float SENSITIVITY = 10;
 	
 	private float mLastValues[] = new float[3 * 2];
 	private float mScale[] = new float[2];
@@ -43,7 +43,6 @@ public class StepDetector implements SensorEventListener{
 		mYOffset = h * 0.5f;
 		mScale[0] = -(h * 0.5f * (1.0f / (SensorManager.STANDARD_GRAVITY * 2)));
 		mScale[1] = -(h * 0.5f * (1.0f / (SensorManager.MAGNETIC_FIELD_EARTH_MAX)));
-		SENSITIVITY = 5;
 	}
 	
 	/**
